@@ -1,251 +1,592 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video Downloader App</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  .header {
-    background-color: red;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .header-title {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    background-color: black;
-    color: white;
-    padding-top: 60px;
-    transition: all 0.3s ease;
-  }
-  .sidebar.active {
-    left: 0;
-  }
-  .menu {
-    padding: 10px 20px;
-    cursor: pointer;
-    text-decoration: none;
-    color: white;
-    display: block;
-  }
-  .menu:hover {
-    background-color: #333;
-  }
-  .cancel-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-  }
-  .content {
-    margin-left: 0;
-    padding: 20px;
-    transition: margin-left 0.3s ease;
-  }
-  .menu-header {
-    background-color: red;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-  }
-  .section {
-    box-sizing: border-box;
-  background: #f0f0f0;
-  width: 340px;
-  margin: 20px auto;
-  height: 170px;
-  border-radius: 5px;
-}
-  .search-container {
-    position: relative;
-    max-width: 600px;
-    margin: 15px auto;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    padding: 20px;
-  }
-  .search-input {
-    width: calc(100% - 50px); /* Adjust width to accommodate icon and button */
-    border: none;
-    padding: 20px 50px 20px 40px; /* Adjust padding to leave space for icon and button */
-    font-size: 16px;
-    border-radius: 5px;
-    box-sizing: border-box; /* Include padding in width calculation */
-  }
-  .search-icon {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    color: #333;
-    padding: 20px 15px;
-  }
-  .paste-button {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 15px;
-    border-radius: 100%;
-    cursor: pointer;
-  }
-  .download-button {
-    background-color: #66bb6a;
-    color: white;
-    border: none;
-    padding:  15px 88px;
-    border-radius: 5px;
-    margin-top: 1px
-    display: block;
-    margin-left: 20px;
-    margin-right: auto;
-    cursor: pointer;
-  }
-  
-  .icon-section {
-    display: flex;
-    justify-content: space-around;
-    max-width: 600px;
-    margin: 30px auto;
-  }
-  .icon {
-    text-align: center;
-  }
-  .icon i {
-    font-size: 24px;
-  }
-  .icon-title {
-    margin-top: 10px;
-    font-weight: ;
-  }
-  .facebook-icon {
-    color: #3b5998; /* Facebook blue color */
-  }
-  .instagram-icon {
-    color: #e4405f; /* Instagram pink color */
-  }
-  .dailymotion-icon {
-    color: #0066dc; /* Dailymotion blue color */
-  }
-  .threads-icon {
-    color: #1a1a1a; /* Threads black color */
-  }
-  .navbar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: red;
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 0;
-  }
-  .navbar-icon {
-    font-size: 24px;
-    text-align: center;
-    margin: 0 10px;
-    cursor: pointer;
-  }
-  .navbar-text {
-    font-size: 14px;
-    margin-top: 5px;
-  }
-</style>
+  <script src="//code.tidio.co/vowihqvf79sngjqf4jpz0jxgqnvmzbq8.js" async></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-A1G4EJaU9BExIF9DK7XTrPPt2XoyKxsEjwMbUMws29ANq9knIm9lTLYwhbL9vCBbh2MNeA1grNa/ZpPp3R8uOQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-
-<div class="header">
-  <div class="menu" onclick="toggleSidebar()">
-    <i class="fas fa-bars"></i>
-    <span class="menu-text"></span>
+  
+  
+  <header>
+    <div class="menu-icon" onclick="toggleSidebar()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <h2 style="font-size:16px;">Boon</h2>
+    <a href="login.html" class="profile-icon">
+      <img src="mmmm.png" alt="Profile Icon" width="30" height="30">
+    </a>
+  </header>
+   <div class="hero-image">
+    <div class="hero-text">
+      <h1 style="color:yellow;">Unleashing The Power Of Growth</h1>
+    </div>
+    
   </div>
-  <div class="header-title">Video Downloader App</div>
-  <div class="download">
-    <i class="fas fa-download"></i>
-    <span class="menu-text"></span>
+  <div class="section">
+    <h2>Grow your Wealth with Confidence</h2>
+    
+    <p style="color:#fff;">Boongrow Investment is a trusted financial partner, providing investment solutions tailored to meet your financial goals..</p>
+    <p>With our expertise<br> and dedication,<br> we help clients <br>navigate<br> the complexities<br> of investing and<br> achieve long<br>-term success.</p>
+  
+  <a href="login.html" class="button">APPLY TODAY</a>
+</div>
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+ 
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
+  {
+  "symbols": [
+    {
+      "proName": "BITSTAMP:BTCUSD",
+      "title": "Bitcoin"
+    },
+    {
+      "proName": "BITSTAMP:ETHUSD",
+      "title": "Ethereum"
+    },
+    {
+      "description": "BtcUsdt",
+      "proName": "BINANCE:BTCUSDT"
+    },
+    {
+      "description": "Solusdt",
+      "proName": "BINANCE:SOLUSDT"
+    },
+    {
+      "description": "Ltcusdt",
+      "proName": "BINANCE:LTCUSDT"
+    },
+    {
+      "description": "Cardano",
+      "proName": "BINANCE:ADAUSD"
+    },
+    {
+      "description": "Dogecoin",
+      "proName": "BINANCE:DOGEUSDT"
+    },
+    {
+      "description": "Filecoin",
+      "proName": "GEMINI:FILUSD"
+    },
+    {
+      "description": "yearn.finance",
+      "proName": "COINBASE:YFIUSD"
+    },
+    {
+      "description": "EOS",
+      "proName": "BITFINEX:EOSUSD"
+    },
+    {
+      "description": "Avalanche",
+      "proName": "COINBASE:AVAXBTC"
+    },
+    {
+      "description": "Solana",
+      "proName": "CRYPTO:SOLUSD"
+    }
+  ],
+  "colorTheme": "dark",
+  "isTransparent": false,
+  "showSymbolLogo": true,
+  "locale": "en"
+}
+  </script>
+</div>
+<!-- TradingView Widget END --><style>
+   table{
+        width: 80%;
+        color: white;
+        animation: identifier 20s infinite;
+        transition: 5s;
+        position: absolute;
+        
+    }
+    table, tr,td{
+        border-bottom: 1px solid black;
+    }
+  
+    table b{
+        font-size: 2em;
+        color: rgb(149, 209, 7);
+       
+    }
+   td{
+    padding-top: 3rem;
+    
+   }
+   .flexly{
+        width: 80%;
+         display:flex;
+      justify-content:space-between;
+   }
+    .flexly2{
+         width: 80%;
+         display:flex;
+      justify-content:space-between;
+   }
+   .animi{
+    height: 300px;
+    width: 80%;
+    overflow: hidden;
+    position: relative;
+   margin-left: 10%;
+   }
+   @keyframes identifier {
+    0%{
+      top: -100px;
+    }
+    5%{
+        top: -200px;
+    }
+    10%{
+        top: -300px;
+    }
+    15%{
+        top: -400px;
+    }
+    20%{
+        top: -500px;
+    }
+    25%{
+        top: -600px;
+    }
+     30%{
+        top: -700px;
+    }
+      35%{
+        top: -800px;
+    }
+      40%{
+        top: -900px;
+    }
+    45%{
+        top: -1000px;
+    }
+    50%{
+        top: -1100px;
+    }
+    55%{
+        top: -1200px;
+    }
+    60%{
+        top: -1300px;
+    }
+    65%{
+        top: -1400px;
+    }
+    70%{
+        top: -1500px;
+    }
+    75%{
+        top: -1600px;
+    }
+    80%{
+        top: -1700px;
+    }
+    85%{
+        top: -1800px;
+    }
+    90%{
+        top: -1900px;
+    }
+    95%{
+        top: -2000px;
+    }
+   
+    100%{
+        top: -2100px;
+    }
+   }
+</style>
+<div class="container">
+  <h2 class="heading">Trusted by <br>clients in<br> 100+<br> countries<br> worldwide</h2>
+  <a href="#" class="buttonn">Read more</a>
+</div>
+<div class="sectionn">
+  <h2 class="headinhg">There's no shortage of great perks.</h2>
+  <h3 class="subheading">Choose any S&T checking account, and you’ll find plenty to love.</h3>
+  
+  <i class="fas fa-credit-card icon"></i>
+  <h4 class="headingg">Debit Card</h4>
+  <p class="paragraph">Our debit card takes convenience to an all-time high by allowing you to pay for your purchases wherever Visa® is accepted.</p>
+  
+  <i class="fas fa-mobile-alt icon"></i>
+  <h4 class="headingg">Online & Mobile Banking</h4>
+  <p class="paragraph">Gain access to our online platform and mobile banking app for 24/7 access every day of the year.</p>
+  
+  <i class="fas fa-shield-alt icon"></i>
+  <h4 class="headingg">State-of-the-Art Security Technology</h4>
+  <p class="paragraph">We are committed to protecting the financial and personal information of all our customers.</p>
+</div>
+<div class="sectioon">
+  <img src="image.jpg" alt="Image" class="image"> <!-- Replace 'image.jpg' with your image file -->
+
+  <h3 class="small-heading">Investment Made Easy for you with us</h3>
+  <h2 class="big-heading">Thrive to Succeed</h2>
+
+  <ul class="list">
+    <li><b>Client Success<br></b>Boongrow is committed to helping clients achieve their financial goals and objectives. Whether it's saving for retirement, funding education, or building wealth, Boongrow strives to provide personalized investment solutions and expert guidance to support clients on their financial journey.</li>
+    <li><b>Innovation and Technology<br></b>Boongrow aims to stay at the forefront of innovation by leveraging cutting-edge technology to enhance the client experience. From advanced trading platforms to intuitive mobile apps, Boongrow continuously invests in technology to provide clients with convenient access to their investments and real-time market information.</li>
+    <li><b>Risk Management<br></b>Boongrow places a strong emphasis on risk management to protect clients' investments and minimize downside risk. By conducting thorough research and analysis, diversifying portfolios, and implementing risk mitigation strategies, Boongrow seeks to safeguard clients' assets while maximizing potential returns</li>
+    <li><b>Transparent Practices<br></b>Boongrow operates with integrity, transparency, and honesty in all aspects of its business. From fee structures and investment processes to communication and reporting, Boongrow is committed to maintaining the highest standards of ethical conduct and transparency to build trust and confidence with clients.</li>
+  </ul>
+
+  <a href="login.html" class="buutton">Learn More</a>
+</div>
+</div>
+
+<div class="sectioon">
+  <img src="image8.png" alt="Image" class="image"> <!-- Replace 'image.jpg' with your image file -->
+
+  <h3 class="small-heading">Investment Made Easy for you with us</h3>
+  <h2 class="big-heading">Thrive to Succeed</h2>
+  
+  <a href="login.html" class="button">Learn More</a>
+  </div>
+  <div class="cccontainer">
+  <img src="image10.png" alt="Picture" class="image"> <!-- Replace 'picture.jpg' with your image file -->
+
+  <div class="overlayy">
+    <h2 class="headinggg">Heading</h2>
+    <p class="paragrappph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero et aliquam dignissim. Sed ut ultrices purus.</p>
+    <a href="#" class="butttton">Learn More</a>
+  </div>
+
+
+  </div>
+</div>
+  
+
+<div class="sectiion">
+  <div class="contaiiner">
+    <div class="iicon"><i class="fas fa-user-plus"></i></div> <!-- Icon for Register an Account -->
+    <div class="tiitle">Register an Account</div>
+    <p>Create and verify your account</p>
+  </div>
+
+  <div class="contaiiner">
+    <div class="iicon"><i class="fas fa-money-bill-wave"></i></div> <!-- Icon for Deposit -->
+    <div class="tiitle">Deposit</div>
+    <p style="color:#111;">Deposit through our internal payment or use any verified payment services</p>
+  </div>
+
+  <div class="contaiiner">
+    <div class="iicon"><i class="fas fa-hand-holding-usd"></i></div> <!-- Icon for Instant Withdrawal -->
+    <div class="tiitle">Instant Withdrawal</div>
+    <p style="color:#111;"> withdrawal is available 24/7 either to another wallet or direct bank withdrawal</p>
+  </div>
+
+  <div class="contaiiner">
+    <div class="iicon"><i class="fas fa-headset"></i></div> <!-- Icon for 24/7 Customer Service -->
+    <div class="tiitle">24/7 Customer Service</div>
+    <p style="color:#111;">Our customer service and enquiries are available all the time </p>
   </div>
 </div>
 
-<div class="sidebar" id="sidebar">
-  <div class="cancel-btn" onclick="toggleSidebar()">
-    <i class="fas fa-times"></i>
-  </div>
-  <div class="menu-header">Menu</div>
-  <a href="#" class="menu"><i class="fas fa-home"></i> Home</a>
-  <a href="#" class="menu"><i class="fas fa-video"></i> Videos</a>
-  <a href="#" class="menu"><i class="fas fa-folder"></i> Folders</a>
-  <a href="#" class="menu"><i class="fas fa-star"></i> Favourites</a>
-  <a href="#" class="menu"><i class="fas fa-cloud-download-alt"></i> Download</a>
-  <div class="menu-header">Other</div>
-  <a href="#" class="menu"><i class="fas fa-comment"></i> Feedback</a>
-  <a href="#" class="menu"><i class="fas fa-star"></i> Rate us</a>
-  <a href="#" class="menu"><i class="fas fa-th-list"></i> More apps</a>
-  <a href="#" class="menu"><i class="fas fa-share-alt"></i> Share app</a>
-  <a href="#" class="menu"><i class="fas fa-lock"></i> Privacy</a>
-</div>
 
-<div class="section">
-<div class="search-container">
-  <input type="text" class="search-input" placeholder="Search or type URL">
-  <i class="fas fa-search search-icon"></i>
-  <button class="paste-button"><i class="fas fa-clipboard"></i></button>
-</div>
-
-<button class="download-button">Download Video</button>
-</section>
-
-<div class="icon-section">
-  <div class="icon">
-    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook facebook-icon"></i></a>
-    <div class="icon-title">Facebook</div>
-  </div>
-  <div class="icon">
-    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram instagram-icon"></i></a>
-    <div class="icon-title">Instagram</div>
-  </div>
-  <div class="icon">
-    <a href="https://www.dailymotion.com" target="_blank"><i class="fab fa-dailymotion dailymotion-icon"></i></a>
-    <div class="icon-title">Dailymotion</div>
-  </div>
-  <div class="icon">
-    <a href="https://www.example.com/threads" target="_blank"><i class="fas fa-comments threads-icon"></i></a>
-    <div class="icon-title">Threads</div>
-  </div>
-</div>
- <img src="image10.png" alt="Paris" style="width:340px;height:250px">
+    <section class="investment-plans">
+      <h2>Choose investment plan</h2>
+        <div class="plan">
+            <h2 style="color:#28bd88;">BEGINEER</h2><hr>
+            <p><strong>Duration:</strong> 7 Days</p><hr>
+            <p><strong>Profit Return:</strong> Up to 1.5% Daily</p><hr>
+            <p><strong>Minimum Deposit:</strong> $100</p><hr>
+            <p><strong>Maximum Withdrawal:</strong> $1000 / Instantly</p><hr>
+            <a href="login.html" button class="plan-button">Get Started</a></button>
         </div>
         
-        <div class="navbar">
-  <div class="navbar-icon"><i class="fas fa-bars"></i><div class="navbar-text">Menu</div></div>
-  <div class="navbar-icon"><i class="fas fa-download"></i><div class="navbar-text">Download</div></div>
-  <div class="navbar-icon"><i class="fas fa-folder"></i><div class="navbar-text">Folders</div></div>
-  <div class="navbar-icon"><i class="fas fa-video"></i><div class="navbar-text">Videos</div></div>
-</div>
-<script>
-  function toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("active");
-    document.querySelector(".content").classList.toggle("content-shift");
-  }
-</script>
+        <div class="plan">
+            <h2 style="color:#28bd88;">REGULAR</h2><hr>
+            <p><strong>Duration:</strong> 14 Days</p><hr>
+            <p><strong>Profit Return:</strong> Up to 2.5% Daily</p><hr>
+            <p><strong>Minimum Deposit:</strong> $250</p><hr>
+            <p><strong>Maximum Withdrawal:</strong> $5000/Instantly</p><hr>
+           <a href="login.html"
+  button class="plan-button">Get Started</a></button>
+        </div>
+        
+        <div class="plan">
+            <h2 style="color:#28bd88;">ULTIMATE</h2><hr>
+            <p><strong>Duration:</strong> 21 Days</p><hr>
+            <p><strong>Profit Return:</strong> Up to 5% Daily</p><hr>
+            <p><strong>Minimum Deposit:</strong> $500</p><hr>
+            <p><strong>Maximum Withdrawal:</strong> Unlimited</p><hr>
+            <a href="login.html"
+  button class="plan-button">Get Started</a></button>
+        </div>
+        
+        <div class="plan">
+            <h2 style="color:#28bd88;">PROFESSIONAL</h2><hr>
+            <p><strong>Duration:</strong> 30 Days </p><hr>
+            <p><strong>Profit Return:</strong> Up to 8.5% profit daily</p><hr>
+            <p><strong>Minimum Deposit:</strong> $700/Split Payment Accepted</p><hr>
+            <p><strong>Maximum Withdrawal:</strong> Unlimited</p><hr>
+             <a href="login.html"
+  button class="plan-button">Get Started</a></button>
+        </div>
+        <section class="bitcoin-calculator-section">
+            <div class="container">
+              <div class="row">
+                <!-- Section Heading Starts -->
+                <div class="col-md-12">
+                  <h2 class="title-head text-center"><span>Profit</span> Calculator</h2>
+                  <p class="message text-center">Find out the net profit and total return when you invest.</p>
+                </div>
+        <div class="col-md-12 text-center">
+                  <form name="calculator" class="field_form">
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 col-6">
+                        <div class="form-group">
+                                          <select class="form-control" name="percent" id="percent" style="padding: 4px; background-color: #111">
+                            <option value="">Select Plan</option>
+                                              <option value="1.5">
+                              Beginner:
+                              $                    100-
+                              $1000                  </option>
+                                              <option value="3">
+                              Basic:
+                              $                    500-
+                              $2000                  </option>
+                                              <option value="4.5">
+                              Regular:
+                              $                    1000-
+                              $5000                  </option>
+                                              <option value="6">
+                              Professional:
+                              $                    3000-
+                              $10000                  </option>
+                                              <option value="7.5">
+                              Elite:
+                              $                    5000-
+                              $20000                  </option>
+                                              <option value="9">
+                              Ultimate:
+                              $                    10000-
+                              Unlimited                  </option>
+                                            </select>
+                                          <p>Select Plan</p>
+                        </div>
+          
+                      </div>
+                      <div class="col-lg-2 col-md-4 col-6">
+                        <div class="form-group">
+                          <input type="number" class="form-control" id="amount" placeholder="Amount">
+                          <p>Amount</p>
+                        </div>
+          
+                      </div>
+                      <div class="col-lg-3 col-md-4 col-6">
+                        <input type="button" class="btn-primary" onclick="javascript:multiply();" value="Calculate">
+                      </div>
+                      <div class="col-lg-2 col-md-4 col-6">
+                        <i class="fa fa-bar-chart" style="color: #fff;font-size: 26px;"></i>
+                        <h5>$<span id="netProfit">0.00</span></h5>
+                        <p>Net Profit</p>
+                      </div>
+                      <div class="col-lg-2 col-md-4 col-6">
+                        <i class="fa fa-dollar" style="color: #fff;font-size: 26px;"></i>
+                        <h5>$<span id="profit">0.00</span></h5>
+                        <p>Total Return</p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <!-- Bitcoin Calculator Form Ends -->
+              </div>
+            </div>
+          </section>
+          <script>
+            const multiply = () => {
+             let amount = document.querySelector("#amount").value;
+            let percent = document.querySelector("#percent").value;
+             let profit = document.querySelector("#profit");
+                 let netProfit = document.querySelector("#netProfit");
+             let days;
+             if(percent==1.5){
+                 days = 7;
+             }
+              if(percent==3){
+                 days = 14;
+             }
+              if(percent==4.5){
+                 days = 21;
+             }
+              if(percent==6){
+                 days = 28;
+             } if(percent==7.5){
+                 days = 35;
+             }
+             if(percent==9){
+                 days = 48;
+             }
+            console.log(days)
+             var percentOutput = (percent / 100) * amount;
+             
+             let totalProfit = percentOutput*days;
+             var sum = parseFloat(amount) + parseFloat(totalProfit);
+             netProfit.innerHTML = totalProfit;
+              profit.innerHTML = sum;
+        
+            }
+          </script>
+        </div>
+        </div>
+        </div>
+<div class="stats-container">
+        <h1>Investment Website Statistics</h1>
+        <div class="stats-grid">
+            <div class="stat">
+                <p>Total Jobs Done</p>
+                <span>887+</span>
+            </div>
+            <div class="stat">
+                <p>Active Users</p>
+                <span>1132+</span>
+            </div>
+            <div class="stat">
+                <p>Trusted Companies</p>
+                <span>FDIC,30+ </span>
+            </div>
+        </div>
+    </div>
+        <img src="image10.png" alt="Paris" style="width:340px;height:250px">
+        </div>
 
+    <div class="testimonials-container">
+        <h1>Client Testimonials</h1>
+        <div class="testimonial">
+            <p>"I've been using this platform for a year now and I'm extremely satisfied with the returns on my investments. Highly recommended!"</p>
+            <div class="testimonial-author">John Doe</div>
+        </div>
+        <div class="testimonial">
+            <p>"This is hands down the best investment website out there. The interface is user-friendly and the customer service is top-notch."</p>
+            <div class="testimonial-author">Jane Smith</div>
+        </div>
+        <div class="testimonial">
+            <p>"I was hesitant at first, but after seeing consistent growth in my portfolio, I'm glad I chose this platform for my investments."</p>
+            <div class="testimonial-author">David Johnson</div>
+        </div>
+        <div class="testimonial">
+            <p>"The team behind this website is dedicated to helping their clients succeed. I've never felt more confident in my investment decisions."</p>
+            <div class="testimonial-author">Emily Brown</div>
+        </div>
+        <div class="testimonial">
+            <p>"I've tried several investment platforms before, but none have come close to the level of service and expertise provided here. Keep up the great work!"</p>
+            <div class="testimonial-author">Michael Wilson</div>
+        </div>
+    </div>
+    <!
+    <div class="faq-container">
+        <h1>Frequently Asked Questions</h1>
+        <div class="faq">
+            <h2 style="color:#28bd88;">What investment options do you offer?</h2>
+            <p style="color:#111;">We offer a range of investment options including stocks, bonds, mutual funds, ETFs, and real estate investment trusts (REITs). Our platform provides access to diverse investment opportunities to suit your financial goals and risk tolerance.</p>
+        </div>
+        <div class="faq">
+            <h2 style="color:#28bd88;">How can I open an investment account?</h2>
+            <p style="color:#111;">Opening an investment account is simple and can be done online through our website. You'll need to provide some personal information, such as your name, contact details, and identification documents. Once your account is approved, you can start investing.</p>
+        </div>
+        <div class="faq">
+          <h2 style="color:#28bd88;">What are the fees associated with investing?</h2>
+          <p style="color:#111;"> Our platform charges competitive fees, including transaction fees, management fees for certain investment products, and potentially advisory fees for personalized investment advice. We are transparent about our fee structure, and you can find detailed information on our website.</p>
+        </div>
+        <div class="faq">
+          <h2 style="color:#28bd88;">How do I manage my investments?</h2>
+          <p style="color:#111;">You can manage your investments conveniently through our online platform. You'll have access to real-time market data, portfolio performance reports, and tools to monitor and adjust your investment strategy as needed. Our team is also available to provide guidance and support</p>
+        </div>
+        <div class="faq">
+          <h2 style="color:#28bd88;">Is my investment protected?</h2>
+          <p style="color:#111;">
+            We take the security of your investments seriously. Our platform employs robust security measures, including encryption technology and multi-factor authentication, to safeguard your sensitive information and assets. Additionally, investments may be protected by regulatory schemes such as the Securities Investor Protection Corporation (SIPC) or insurance coverage.
+          </p>
+        </div>
+   </section>
+<div class="container">
+    <h2 style="color:#28bd88;">Saving Plan</h2>
+    <p>This is the simplest form of saving, where you deposit money into a savings account offered by banks or credit unions. The funds earn interest over time, providing a safe and accessible way to save money.</p>
+    <a href="learn-more.html" class="read-more">Read More</a>
+    <img src="image10.png" alt="Image 1">
+</div>
+
+<div class="container">
+    <h2 style="color:#28bd88;">Goal-Based Investment</h2>
+    <p>This involves setting specific savings goals, such as saving for a vacation, a down payment on a house, or a new car. By identifying goals and allocating funds accordingly, individuals can stay motivated and focused on achieving their objectives.</p>
+    <a href="#" class="read-more">Read More</a>
+    <img src="image10.png" alt="Image 2">
+</div>
+
+<div class="container">
+    <h2 style="color:#28bd88;">Trading & investment</h2>
+    <p> structured strategy outlining specific objectives, risk management techniques, asset allocation, and investment selection criteria aimed at achieving financial goals. It encompasses a systematic approach to trading and investing in financial markets, incorporating elements such as defining goals, assessing risk tolerance, asset allocation, investment selection, risk management, monitoring, and review.</p>
+    <a href="#" class="read-more">Read More</a>
+    <img src="image.png" alt="Image 3">
+</div>
+
+<div class="container">
+    <h2 style="color:#28bd88;">Certificate of Deposit</h2>
+    <p>CDs are time-bound savings accounts where you deposit a fixed amount of money for a specific term, ranging from a few months to several years. In return, you receive a fixed interest rate, usually higher than regular savings accounts, but with limited access to funds until the CD matures.</p>
+    <a href="#" class="read-more">Read More</a>
+    <img src="image10.png" alt="Image 4">
+</div>
+
+<div class="container">
+    <h2 style="color:#28bd88;">Education Savings Plans (529 Plans)</h2>
+    <p>529 plans are tax-advantaged savings accounts designed to help families save for future education expenses, such as college tuition, fees, and room and board. These plans offer various investment options and typically provide tax benefits on earnings when used for qualified education expenses</p>
+    <a href="#" class="read-more">Read More</a>
+    <img src="image10.png" alt="Image 2">
+</div>
+
+<div class="container">
+    <h2 style="color:#28bd88;">Emergency Fund</h2>
+    <p>An emergency fund is a savings account specifically designated to cover unexpected expenses such as medical emergencies, car repairs, or job loss. It typically contains enough money to cover three to six months' worth of living expenses..</p>
+    <a href="#" class="read-more">Read More</a>
+    <img src="image10.png" alt="Image 2">
+</div>
+    <div class="contact-container">
+        <h1 style="color:#28bd88;">Contact Us</h1>
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+            
+        </form>
+         <div id="confirmation" style="display: none;">
+            <p>Thank you for contacting us! We will get back to you shortly.</p>
+        </div>
+    </div>
+    </div>
+
+  <div class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="#" onclick="hideSidebar()">Home</a></li>
+      <li><a href="login.html" onclick="hideSidebar()">login</a></li>
+      <li><a href="#" onclick="hideSidebar()">Services</a></li>
+      <li><a href="#" onclick="hideSidebar()">Contact</a></li>
+    </ul>
+  </div>
+  <script src="//code.tidio.co/vowihqvf79sngjqf4jpz0jxgqnvmzbq8.js" async></script>
+  <script src="script.js"></script>
+  
 </body>
-  </html
+</html>
